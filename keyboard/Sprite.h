@@ -51,6 +51,9 @@ public:
 	//change which part later
 	void SetTexRect(const RECTF& texRect);
 
+	void SetFillScreen(float screenWidth, float screenHeight);
+
+
 	//getters
 	const TexCache::Data& GetTexData() const {
 		assert(mpTexData);

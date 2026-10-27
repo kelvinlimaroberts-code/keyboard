@@ -37,5 +37,10 @@ void Sprite::SetTex(ID3D11ShaderResourceView& tex, const RECTF& texRect)
 void Sprite::SetTexRect(const RECTF& texRect) {
 	mTexRect = texRect;
 }
+void Sprite::SetFillScreen(float screenWidth, float screenHeight)
+{
+	scale.x = screenWidth / mTexRect.right;
+	scale.y = screenHeight / mTexRect.bottom;
+}
 
 
