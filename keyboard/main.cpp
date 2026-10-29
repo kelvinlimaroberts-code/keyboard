@@ -64,6 +64,8 @@ void RawInputEvent(HRAWINPUT rawInput)
 				keyBuffer[vkey] = 0;
 			else
 				keyBuffer[vkey] = 1;
+			//dbout test
+			DBOUT("The key of " << char(vkey) << " has a value of " << keyBuffer[vkey]);
 		}
 	}
 }
