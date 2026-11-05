@@ -61,11 +61,19 @@ void RawInputEvent(HRAWINPUT rawInput)
 		{
 			unsigned short flags = raw->data.keyboard.Flags;
 			if (flags & RI_KEY_BREAK) //key up
+			{
 				keyBuffer[vkey] = 0;
+			}
 			else
-				keyBuffer[vkey] = 1;
+			{
+				keyBuffer[vkey] = 1;  //key down
+				Player::UpdateInputValue(vkey);
+
+			}
+				
+
 			//dbout test
-			DBOUT("The key of " << char(vkey) << " has a value of " << keyBuffer[vkey]);
+			//DBOUT("The key of " << vkey << " (aka " << char(vkey) << ") has a value of " << keyBuffer[vkey]);
 		}
 	}
 }
@@ -150,7 +158,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 		}
 		dTime = WinUtil::Get().EndLoop(canUpdateRender);
 	}
-
+	
 	game.Release();
 	d3d.ReleaseD3D(true);	
 	return 0;

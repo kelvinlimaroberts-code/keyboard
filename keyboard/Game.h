@@ -3,8 +3,7 @@
 #include <vector>
 
 #include "D3D.h"
-#include "SpriteBatch.h"
-#include "Sprite.h"
+#include "Player.h"
 
 //horizontal scrolling with player controlled ship
 class PlayMode
@@ -16,7 +15,7 @@ public:
 private:
 	const float SCROLL_SPEED = 10.f;
 	MyD3D& mD3D;
-	Sprite mShip;
+	Player mShip;
 };
 
 

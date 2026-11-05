@@ -66,6 +66,7 @@ PlayMode::PlayMode(MyD3D & d3d)
 
 void PlayMode::Update(float dTime)
 {
+	mShip.UpdatePosition(dTime);
 }
 
 void PlayMode::Render(float dTime, DirectX::SpriteBatch & batch) 
