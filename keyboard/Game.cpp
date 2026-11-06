@@ -74,10 +74,10 @@ void PlayMode::Render(float dTime, DirectX::SpriteBatch & batch)
 	//hack mode engaged
 	Sprite spr(mD3D);
 	spr.SetTex(*mD3D.GetCache().LoadTexture(&mD3D.GetDevice(), "backgroundlayers/InTheRightOrderTheyLookLikeThis.dds", "bgnd", true));
-	spr.SetScale(Vector2(1, 1));
+	spr.SetFillScreen();
 	spr.Draw(batch);
-
 	//ship
+	mShip.SetScalePropotionalToScreen({0.1,0.25});
 	mShip.Draw(batch);
 }
 

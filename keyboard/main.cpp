@@ -73,7 +73,7 @@ void RawInputEvent(HRAWINPUT rawInput)
 				
 
 			//dbout test
-			//DBOUT("The key of " << vkey << " (aka " << char(vkey) << ") has a value of " << keyBuffer[vkey]);
+			DBOUT("The key of " << vkey << " (aka " << char(vkey) << ") has a value of " << keyBuffer[vkey]);
 		}
 	}
 }

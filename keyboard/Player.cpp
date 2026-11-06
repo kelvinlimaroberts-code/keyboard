@@ -49,6 +49,27 @@ void Player::UpdatePosition(float elapsed)
 		break;
 	}
 
-	mPos = mPos + mDirection * mSpeed * elapsed;
+	mDesiredPos = mPos + mDirection * mSpeed * elapsed;
+	int w = WinUtil::Get().GetClientWidth();
+	int h = WinUtil::Get().GetClientHeight();
+	if (mDesiredPos.x <= 0) //check its not going too far left
+	{
+		mDesiredPos.x = w;
+	}
+	else if (mDesiredPos.x >= w) //check its not going too far right
+	{
+		mDesiredPos.x = 0;
+	}
+	else if (mDesiredPos.y <= 0) //check its not going to far up
+	{
+		mDesiredPos.y = h;
+	}
+	else if (mDesiredPos.y >= h) //check its not goind to far down
+	{
+		mDesiredPos.y = 0;
+	}
+	mPos = mDesiredPos;
 }
+
+
 

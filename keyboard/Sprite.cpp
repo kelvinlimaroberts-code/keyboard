@@ -37,10 +37,20 @@ void Sprite::SetTex(ID3D11ShaderResourceView& tex, const RECTF& texRect)
 void Sprite::SetTexRect(const RECTF& texRect) {
 	mTexRect = texRect;
 }
-void Sprite::SetFillScreen(float screenWidth, float screenHeight)
+void Sprite::SetFillScreen()
 {
-	scale.x = screenWidth / mTexRect.right;
-	scale.y = screenHeight / mTexRect.bottom;
+	//100% screen size
+	scale.x = WinUtil::Get().GetClientWidth() / mTexRect.right;      
+	scale.y = WinUtil::Get().GetClientHeight() / mTexRect.bottom;
 }
+
+void Sprite::SetScalePropotionalToScreen(const DirectX::SimpleMath::Vector2& s)
+{
+	scale.x = ((WinUtil::Get().GetClientWidth() / mTexRect.right) ) * s.x;
+	scale.y = ((WinUtil::Get().GetClientHeight() / mTexRect.bottom)) * s.y;
+
+}
+
+
 
 

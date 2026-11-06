@@ -1,6 +1,7 @@
 #pragma once
 #include "SpriteBatch.h"
 #include "D3D.h"
+#include "WindowUtils.h"
 
 //handy rectangle definer
 struct RECTF
@@ -51,7 +52,8 @@ public:
 	//change which part later
 	void SetTexRect(const RECTF& texRect);
 
-	void SetFillScreen(float screenWidth, float screenHeight);
+	void SetFillScreen();
+	void SetScalePropotionalToScreen(const DirectX::SimpleMath::Vector2& s);
 
 
 	//getters
