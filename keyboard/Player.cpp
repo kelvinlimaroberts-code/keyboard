@@ -8,6 +8,7 @@ Player::Player(MyD3D& d3d) :Sprite(d3d)
 
 void Player::UpdateInputValue(int vKey)
 {
+	currentInput = vKey;
 	switch (vKey)
 	{
 	case (87):  //w
@@ -30,11 +31,15 @@ void Player::UpdateInputValue(int vKey)
 		currentInput = INPUT_NONE;
 	}
 }
+// Remove wierd static call, make it so you pass the keys pressed through to ship on games update.
+// Expand the enum for inputs properly
+// Make sure you add the cases in for these expanded enum things
 
 void Player::UpdatePosition(float elapsed)
 {
 	switch (currentInput)
 	{
+	case (INPUT_UP):
 	case (INPUT_W):
 		mDirection = DirectX::SimpleMath::Vector2(0, -1);
 		break;
@@ -47,6 +52,8 @@ void Player::UpdatePosition(float elapsed)
 	case (INPUT_D):
 		mDirection = DirectX::SimpleMath::Vector2(1, 0);
 		break;
+	default:
+		//assert(false && "BAD INPUT!");
 	}
 
 	mDesiredPos = mPos + mDirection * mSpeed * elapsed;

@@ -1,6 +1,15 @@
 #pragma once
 #include "Sprite.h"
-const enum movementInputs { INPUT_NONE = 0, INPUT_W = 87, INPUT_A = 65, INPUT_S = 83, INPUT_D = 68 };
+const enum movementInputs 
+{ 
+	INPUT_NONE = 0
+	, INPUT_UP = 38
+
+	, INPUT_W = 87
+	, INPUT_A = 65
+	, INPUT_S = 83
+	, INPUT_D = 68 
+};
 static movementInputs currentInput;
 
 class Player : public Sprite

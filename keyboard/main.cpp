@@ -67,6 +67,7 @@ void RawInputEvent(HRAWINPUT rawInput)
 			else
 			{
 				keyBuffer[vkey] = 1;  //key down
+
 				Player::UpdateInputValue(vkey);
 
 			}
@@ -153,7 +154,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 	{
 		if (canUpdateRender && dTime>0)
 		{
-			game.Update(dTime);
+			game.Update(dTime, vKey);
 			game.Render(dTime);
 		}
 		dTime = WinUtil::Get().EndLoop(canUpdateRender);
