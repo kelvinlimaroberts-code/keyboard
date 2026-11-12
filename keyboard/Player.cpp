@@ -6,30 +6,9 @@ Player::Player(MyD3D& d3d) :Sprite(d3d)
 	mDirection = DirectX::SimpleMath::Vector2(0, 0);
 }
 
-void Player::UpdateInputValue(int vKey)
+void Player::UpdateInputValue(unsigned short vKey)
 {
-	currentInput = vKey;
-	switch (vKey)
-	{
-	case (87):  //w
-	case (38): //up arrow
-		currentInput = INPUT_W;
-		break;
-	case (65):  //a
-	case (37): //left arrow
-		currentInput = INPUT_A;
-		break;
-	case (83):  //s
-	case (40): //down arrow
-		currentInput = INPUT_S;
-		break;
-	case (68):  //d
-	case (39): //right arrow
-		currentInput = INPUT_D;
-		break;
-	default:
-		currentInput = INPUT_NONE;
-	}
+	currentInput = (movementInputs)vKey;
 }
 // Remove wierd static call, make it so you pass the keys pressed through to ship on games update.
 // Expand the enum for inputs properly
@@ -43,16 +22,19 @@ void Player::UpdatePosition(float elapsed)
 	case (INPUT_W):
 		mDirection = DirectX::SimpleMath::Vector2(0, -1);
 		break;
+	case (INPUT_LEFT):
 	case (INPUT_A):
 		mDirection = DirectX::SimpleMath::Vector2(-1, 0);
 		break;
+	case (INPUT_DOWN):
 	case (INPUT_S):
 		mDirection = DirectX::SimpleMath::Vector2(0, 1);
 		break;
+	case (INPUT_RIGHT):
 	case (INPUT_D):
 		mDirection = DirectX::SimpleMath::Vector2(1, 0);
 		break;
-	default:
+	//default:
 		//assert(false && "BAD INPUT!");
 	}
 

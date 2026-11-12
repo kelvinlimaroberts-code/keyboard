@@ -10,7 +10,7 @@ class PlayMode
 {
 public:
 	PlayMode(MyD3D& d3d);
-	void Update(float dTime);
+	void Update(float dTime, unsigned short lastKeyPress);
 	void Render(float dTime, DirectX::SpriteBatch& batch);
 private:
 	const float SCROLL_SPEED = 10.f;
@@ -31,7 +31,7 @@ public:
 
 
 	void Release();
-	void Update(float dTime);
+	void Update(float dTime, unsigned short lastKeyPress);
 	void Render(float dTime);
 private:
 	MyD3D& mD3D;

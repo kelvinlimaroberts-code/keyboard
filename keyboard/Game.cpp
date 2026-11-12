@@ -23,12 +23,12 @@ void Game::Release()
 }
 
 //called over and over, use it to update game logic
-void Game::Update(float dTime)
+void Game::Update(float dTime, unsigned short lastKeyPress)
 {
 	switch (state)
 	{
 	case State::PLAY:
-		mPMode.Update(dTime);
+		mPMode.Update(dTime, lastKeyPress);
 	}
 }
 
@@ -64,8 +64,9 @@ PlayMode::PlayMode(MyD3D & d3d)
 	mShip.rotation = PI/2.f;
 }
 
-void PlayMode::Update(float dTime)
+void PlayMode::Update(float dTime, unsigned short lastKeyPress)
 {
+	mShip.UpdateInputValue(lastKeyPress);
 	mShip.UpdatePosition(dTime);
 }
 

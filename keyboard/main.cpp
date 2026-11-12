@@ -30,6 +30,7 @@ Intercept and process raw input data events
 enum { RAWBUFF_SIZE = 512, KEYBUFF_SIZE = 255 };
 unsigned char inBuffer[RAWBUFF_SIZE];
 unsigned short keyBuffer[KEYBUFF_SIZE];  //virtual key codes, but only the standard ones (first 256)
+unsigned short lastKeyPress = 0;
 
 //identify the key adn record it in the keyBuffer array
 void RawInputEvent(HRAWINPUT rawInput)
@@ -67,14 +68,12 @@ void RawInputEvent(HRAWINPUT rawInput)
 			else
 			{
 				keyBuffer[vkey] = 1;  //key down
-
-				Player::UpdateInputValue(vkey);
-
+				lastKeyPress = vkey;
 			}
 				
 
 			//dbout test
-			DBOUT("The key of " << vkey << " (aka " << char(vkey) << ") has a value of " << keyBuffer[vkey]);
+			//DBOUT("The key of " << vkey << " (aka " << char(vkey) << ") has a value of " << keyBuffer[vkey]);
 		}
 	}
 }
@@ -154,7 +153,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
 	{
 		if (canUpdateRender && dTime>0)
 		{
-			game.Update(dTime, vKey);
+			game.Update(dTime, lastKeyPress);
 			game.Render(dTime);
 		}
 		dTime = WinUtil::Get().EndLoop(canUpdateRender);
